@@ -16,3 +16,4 @@ secrets:
 
 volumes:
   DDNSAppData:
+    external: true

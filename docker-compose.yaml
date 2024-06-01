@@ -1,0 +1,18 @@
+services:
+
+  DDNS:
+    image: denoland/deno:1.44.0
+    volumes:
+      - DDNSAppData:/app
+    command: sh -c "cd /app && deno run --allow-net --allow-write --allow-read --allow-env main.ts --host=ssh --domain=seanotto.dev"
+    secrets:
+      - source: env
+        target: /app/.env
+
+
+secrets:
+  env:
+    file: env/.env 
+
+volumes:
+  DDNSAppData:
